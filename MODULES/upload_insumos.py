@@ -18,7 +18,6 @@ def upload(files, date, dbcon):
 
         if not os.path.exists(file_path):
             path_nf.append(f'ARQUIVO NÃO ENCONTRADO ENCONTRADO {file_path}')
-
         else:
             state = file.split('_')
             state = state[4]

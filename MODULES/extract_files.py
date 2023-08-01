@@ -8,10 +8,7 @@ def filter_files(names, yearmonth, states):
     extraction = 'EXTRACTION'
     extract_files(names, extraction)
 
-    year = yearmonth[:4]
-    month = yearmonth[4:]
-    monthyear = month+year
-    files = get_files(yearmonth, monthyear, states)
+    files = get_files(yearmonth, states)
 
     class paths:
         def __init__(self, insumos, composin, compoan):
@@ -34,7 +31,7 @@ def extract_files(names, extraction):
         os.remove(file_path)
 
 
-def get_files(yearmonth, monthyear, states):
+def get_files(yearmonth, states):
 
     insumos = []
     composin = []
@@ -42,7 +39,7 @@ def get_files(yearmonth, monthyear, states):
 
     for state in states:
 
-        txt = f'SINAPI_Preco_Ref_Insumos_{state}_{monthyear}_NaoDesonerado.XLS'
+        txt = f'SINAPI_Preco_Ref_Insumos_{state}_{yearmonth}_NaoDesonerado.XLS'
         insumos.append(txt)
 
         txt = f'SINAPI_Custo_Ref_Composicoes_Analitico_{state}_{yearmonth}_NaoDesonerado.xls'

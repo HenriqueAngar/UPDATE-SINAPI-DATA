@@ -115,7 +115,7 @@ def send_info(info, dbcon):
             to_insert.append((data.idsis, data.an, data.ins, 5, data.un,
                               data.qtd, data.price, data.uf, data.date, 1))
 
-        if ct % 250 == 0 or ct == biggest:
+        if ct % 500 == 0 or ct == biggest:
             print(
                 F' {ct} OF {biggest} UPLOADED FOR COMPOAN {data.uf} {str(data.date)}')
             cursor.executemany(sql_comand, to_insert)

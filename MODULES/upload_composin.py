@@ -103,7 +103,7 @@ def send_info(info, state, date, dbcon):
             to_insert.append((5, 12, data.classe, data.tipo, data.descri,
                              data.un, data.preco, None, state, date, 1, data.idsis))
 
-        if ct % 250 == 0 or ct == biggest:
+        if ct % 500 == 0 or ct == biggest:
             print(F' {ct} OF {biggest} UPLOADED FOR COMPOSIN {state} {str(date)}')
             cursor.executemany(sql_comand, to_insert)
             connect_it.commit()

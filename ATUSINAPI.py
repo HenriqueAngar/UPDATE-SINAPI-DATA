@@ -1,6 +1,9 @@
 # UPDATE PRICES ON DB
 
 import os
+import shutil
+
+import pyodbc
 
 from MODULES import dbconection as dbcon
 from MODULES import dowload_files as dwf
@@ -28,9 +31,15 @@ def ATUSINAPI(yearmonth):
 
     origin = os.path.abspath('.')
     extraction = os.path.join(origin, 'EXTRACTION')
-    os.remove(extraction)
+    shutil.rmtree(extraction)
 
-    print(f'SINAPI UPDATE DONE')
+    connect_it = pyodbc.connect(conection)
+    cursor = connect_it.cursor()
+    sql_comand = 'EXEC ATUSINAPI '+str(yearmonth)
+    cursor.execute(sql_comand)
+    connect_it.commit()
+
+    print(f'SINAPI UPDATE DONE FOR {yearmonth}')
 
 
-ATUSINAPI('202307')
+ATUSINAPI('202306')
